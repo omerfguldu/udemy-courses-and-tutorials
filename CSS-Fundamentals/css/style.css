@@ -1,13 +1,53 @@
 * {
   /* border-top: 10px solid #1098ad; */
   /* font-family: "Courier New", Courier, monospace; */
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
 }
 
+/* PAGE SECTION */
 body {
   font-family: sans-serif;
   color: #444;
+  border-top: 10px solid #1098ad;
+  position: relative;
 }
 
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.main-header {
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+  margin-bottom: 60px;
+  /* height: 80px; */
+}
+
+nav {
+  font-size: 18px;
+  text-align: center;
+}
+
+article {
+  margin-bottom: 60px;
+}
+
+.post-header {
+  margin-bottom: 30px;
+}
+
+aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+  padding: 50px 0;
+  width: 500px;
+}
+
+/* SMALLER ELEMENTS */
 h1,
 h2,
 h3 {
@@ -22,10 +62,13 @@ h1 {
 
 h2 {
   font-size: 40px;
+  margin-bottom: 30px;
 }
 
 h3 {
   font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 40px;
 }
 
 h4 {
@@ -37,10 +80,22 @@ h4 {
 p {
   font-size: 22px;
   line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+ul,
+ol {
+  margin-left: 50px;
+  margin-bottom: 20px;
 }
 
 li {
   font-size: 20px;
+  margin-bottom: 10px;
+}
+
+li:last-child {
+  margin-bottom: 0;
 }
 
 /* footer p {
@@ -67,16 +122,6 @@ li {
 
 .related-posts {
   list-style: none;
-}
-
-.main-header {
-  background-color: #f7f7f7;
-}
-
-aside {
-  background-color: #f7f7f7;
-  border-top: 5px solid #1098ad;
-  border-bottom: 5px solid #1098ad;
 }
 
 li:first-child {
@@ -119,6 +164,61 @@ a:active {
 }
 /* LVHA */
 
+.post-img {
+  width: 100%;
+  height: auto;
+}
+
+nav a:link {
+  /* background-color: orange;
+  margin: 20px;
+  padding: 20px;
+  display: block; */
+
+  display: inline-block;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+
+nav a:link:last-child {
+  margin-right: 0;
+}
+
+.btn-like {
+  font-size: 22px;
+  padding: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+}
+
+h1::first-letter {
+  font-style: normal;
+  margin-right: 5px;
+}
+
+h2 {
+  position: relative;
+}
+
+h2::after {
+  content: "TOP";
+  color: #000;
+  background-color: #ffe70e;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 5px 10px;
+  position: absolute;
+  right: -25px;
+  top: -10px;
+}
+
+/* h3 + p::first-line {
+  font-weight: bold;
+}  */
+
 /* Resolving conflicts */
 /* #copyright {
   color: red;
@@ -140,7 +240,3 @@ footer p {
 nav p {
   font-size: 18px;
 } */
-
-nav {
-  font-size: 18px;
-}
