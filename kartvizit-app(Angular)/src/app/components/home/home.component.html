@@ -1,0 +1,51 @@
+<div class="container" *ngIf="!authService.loggedIn">
+  <div class="screen">
+    <div class="screen-content">
+      <!-- action="javascript:void(0);" -->
+      <form action="javascript:void(0);" class="login">
+        <div class="login-field">
+          <fa-icon class="login-icon" [icon]="faUser"></fa-icon>
+          <input
+            type="text"
+            class="login-input"
+            placeholder="Kullanici adi / Email"
+            #usernameInput
+            (keyup)="usernameValue = usernameInput.value"
+          />
+        </div>
+        <div class="login-field">
+          <fa-icon class="login-icon" [icon]="faLock"></fa-icon>
+          <input
+            type="password"
+            class="login-input"
+            placeholder="Sifre"
+            #passwordInput
+            (keyup)="passwordValue = passwordInput.value"
+          />
+        </div>
+        <button (click)="onLogin()" class="button login-submit">
+          <span class="button-text">Giris Yap</span>
+          <fa-icon class="button-icon" [icon]="faChevronRight"></fa-icon>
+        </button>
+      </form>
+      <div class="social-login">
+        <h3>login via</h3>
+        <div class="social-icons">
+          <a href="#" class="social-login-icon"
+            ><fa-icon [icon]="faFacebook"></fa-icon></a
+          ><a href="#" class="social-login-icon"
+            ><fa-icon [icon]="faInstagram"></fa-icon></a
+          ><a href="#" class="social-login-icon"
+            ><fa-icon [icon]="faTwitter"></fa-icon
+          ></a>
+        </div>
+      </div>
+    </div>
+    <div class="screen-background">
+      <span class="screen-background-shape screen-background-shape4"></span
+      ><span class="screen-background-shape screen-background-shape3"></span
+      ><span class="screen-background-shape screen-background-shape2"></span
+      ><span class="screen-background-shape screen-background-shape1"></span>
+    </div>
+  </div>
+</div>
