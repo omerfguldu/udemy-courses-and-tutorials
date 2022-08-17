@@ -1,0 +1,5 @@
+assignments/
+assets
+node_modules
+.parcel-cache
+dist
