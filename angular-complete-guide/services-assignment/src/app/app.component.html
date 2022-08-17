@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <h2>Active Users</h2>
+      <app-active-users
+        *ngFor="let active of activeUsers; let i = index"
+        [active]="active"
+        [i]="i"
+      ></app-active-users>
+      <hr />
+      <h2>Inactive Users</h2>
+      <app-inactive-users
+        *ngFor="let inactive of inactiveUsers; let i = index"
+        [inactive]="inactive"
+        [i]="i"
+      ></app-inactive-users>
+    </div>
+  </div>
+</div>

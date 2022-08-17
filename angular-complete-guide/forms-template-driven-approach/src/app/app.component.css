@@ -1,0 +1,20 @@
+.container {
+  margin-top: 30px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input, select {
+  margin-bottom: 10px;
+}
+
+.btn-default {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid lightcoral;
+}

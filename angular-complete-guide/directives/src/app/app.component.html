@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">
+        Only show odd numbers
+      </button>
+      <br /><br />
+      <ul class="list-group">
+        <div *ngIf="onlyOdd">
+          <li
+            class="list-group-item"
+            *ngFor="let odd of oddNumbers"
+            [ngClass]="{ odd: odd % 2 !== 0 }"
+            [ngStyle]="{
+              backgroundColor: odd % 2 !== 0 ? '#444' : 'transparent'
+            }"
+          >
+            {{ odd }}
+          </li>
+        </div>
+        <!-- <div *ngIf="!onlyOdd">
+          <li
+            class="list-group-item"
+            *ngFor="let even of evenNumbers"
+            [ngClass]="{ odd: even % 2 !== 0 }"
+            [ngStyle]="{
+              backgroundColor: even % 2 !== 0 ? '#444' : 'transparent'
+            }"
+          >
+            {{ even }}
+          </li>
+        </div> -->
+        <div *appUnless="onlyOdd">
+          <li
+            class="list-group-item"
+            *ngFor="let even of evenNumbers"
+            [ngClass]="{ odd: even % 2 !== 0 }"
+            [ngStyle]="{
+              backgroundColor: even % 2 !== 0 ? '#444' : 'transparent'
+            }"
+          >
+            {{ even }}
+          </li>
+        </div>
+      </ul>
+      <p appBasicHighlight>Style me with basic directive!</p>
+      <p appBetterHighlight="red" defaultColor="yellow">
+        Style me with better directive!
+      </p>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="100">Value is 100</p>
+        <p *ngSwitchDefault>Value is default</p>
+      </div>
+      <p [ngStyle]="currentStyles" *ngIf="displayedText">
+        This text is {{ currentStyles.color }} ,
+        {{ currentStyles["font-size"] }} and {{ currentStyles["font-style"] }} !
+      </p>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="currentStyles.color"
+        (input)="inputChange($event)"
+      />
+      <button class="btn btn-primary" (click)="displayText()">
+        {{ buttonText }} Text
+      </button>
+      <br />
+      <label for="">Write a highlight color</label> <br />
+      <input type="text" (input)="changeColor($event)" />
+      <p [appHighlight]="highlightColor">Highlight me!!!</p>
+      <br />
+      <p>Condition state is {{ condition }}</p>
+      <button class="btn btn-primary" (click)="onChangeCondition()">
+        Change Condition
+      </button>
+      <p *appReverse="condition">
+        Show this sentence unless the condition is true.
+      </p>
+    </div>
+  </div>
+</div>

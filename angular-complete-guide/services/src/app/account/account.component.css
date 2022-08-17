@@ -1,0 +1,18 @@
+.row {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.button-container button {
+  transition: all ease 0.5s;
+}
+
+.button-container button:hover {
+  background-color: #4dabf7;
+}

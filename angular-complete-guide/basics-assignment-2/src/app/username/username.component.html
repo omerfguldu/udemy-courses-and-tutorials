@@ -1,0 +1,15 @@
+<label for="">Username</label>
+<input
+  type="text"
+  class="form-control"
+  [(ngModel)]="userName"
+  (input)="isEmpty($event)"
+/>
+<p>{{ userName }}</p>
+<button
+  class="btn btn-primary btn-lg"
+  (click)="resetInput()"
+  [disabled]="empty"
+>
+  Reset
+</button>

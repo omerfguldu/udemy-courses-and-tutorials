@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form>
+      <div class="form-group">
+        <label for="fruit-name">Fruit Name</label>
+        <input
+          type="text"
+          class="form-control"
+          value=" {{ value }} "
+          #sendInputValue
+        />
+      </div>
+      <button class="btn btn-primary" (click)="addItem(sendInputValue.value)">
+        Add Item
+      </button>
+      <button class="btn btn-warning" (click)="sendInputValue.value = ''">
+        Reset Input
+      </button>
+    </form>
+  </div>
+</div>

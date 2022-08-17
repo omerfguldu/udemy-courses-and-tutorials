@@ -1,0 +1,11 @@
+<button class="btn btn-primary btn-lg" (click)="toggleDetails()">
+  Display Details
+</button>
+<p *ngIf="showDetail">*Secret Password = 2618</p>
+<p
+  *ngFor="let counters of countersArray; let i = index"
+  [ngStyle]="{ 'background-color': i >= 4 ? 'blue' : 'transparent' }"
+  [ngClass]="{ 'color-white': i >= 4 }"
+>
+  {{ counters }}
+</p>
