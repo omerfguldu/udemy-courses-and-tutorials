@@ -70,7 +70,7 @@
                 <tr>
                   <td>Omer</td>
                   <td>Guldu</td>
-                  <td>24</td>
+                  <td>25</td>
                 </tr>
                 <tr>
                   <!-- <td class="table-danger">Cafer</td> -->
@@ -136,41 +136,261 @@
           </form>
         </div>
       </div>
+      <!-- FLOATING LABELS -->
+      <div class="row mb-5">
+        <div class="col">
+          <form >
+            <div class="form-floating">
+              <input type="email" id="email" class="form-control" placeholder="Place email here">
+              <label for="email" class="form-label">Email</label>
+            </div>
+            <button>Submit</button>
+          </form>
+        </div>
+      </div>
+      <!-- FORM VALIDATION -->
+      <div class="row mb-5">
+        <div class="col">
+          <form class="frm-validate" novalidate>
+            <div class="form-floating">
+              <input type="email" id="email" class="form-control is-valid" placeholder="Place email here" required>
+              <label for="email" class="form-label">Email</label>
+              <div class="invalid-feedback">Invalid Email</div>
+              <div class="valid-feedback">Correct email</div>
+            </div>
+            <button>Submit</button>
+          </form>
+        </div>
+      </div>
+      <!-- BUTTONS -->
+      <div class="row mb-5">
+        <div class="col">
+          <button class="btn btn-link">Test</button>
+          <button class="btn btn-primary btn-sm">Test</button>
+          <a class="btn btn-primary btn-lg disabled">Test</a>
+          <button class="btn btn-outline-secondary" disabled>Test</button>
+          <div class="btn-group btn-group-lg">
+            <button class="btn btn-primary">Test</button>
+            <button class="btn btn-outline-primary">Test</button>
+            <button class="btn btn-primary">Test</button>
+            <button class="btn btn-outline-primary">Test</button>
+          </div>
+          <div class="btn-group-vertical btn-group-sm">
+            <button class="btn btn-primary">Test</button>
+            <button class="btn btn-outline-primary">Test</button>
+            <button class="btn btn-primary">Test</button>
+            <button class="btn btn-outline-primary">Test</button>
+          </div>
+        </div>
+      </div>
+      <!-- ALERTS -->
+      <div class="row mb-5">
+        <div class="alert alert-dark alert-dismissible fade show" role="alert">
+          Alert Dark
+          <button class="btn-close" aria-label="close" data-bs-dismiss="alert"></button>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <h1>Alert Danger</h1>
+          <a href="#" class="alert-link">Go here to find out</a>
+          <button class="btn-close" aria-label="close" data-bs-dismiss="alert"></button>
+        </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          Alert Success
+          <button class="btn-close" aria-label="close" data-bs-dismiss="alert"></button>
+        </div>
+        </div>
+        <!-- CARDS -->
+      <div class="row mb-5">
+        <div class="col">
+          <div class="card-group">
+          <div class="card" style="width: 400px;">
+            <img src="https://images.unsplash.com/photo-1661103517104-9d118ccad126?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img">
+            <div class="card-body card-img-overlay" style="color: orange;">
+              <h2 class="card-title">Bob Ross</h2>
+              <span class="card-subtitle">Bob Ross Quotes</span>
+              <div class="card-text">                
+                Be so very light. Be a gentle whisper. Those great big fluffy
+                clouds. These little son of a guns hide in your brush and you just
+                have to push them out. Put your feelings into it, your heart, it's
+                your world. It's almost like something out of a fairytale book. I
+                want everbody to be happy.
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="width: 400px;">
+            <h2 class="card-header">Card Header</h2>
+            <div class="card-body">
+              <h2 class="card-title">Bob Ross</h2>
+              <span class="card-subtitle">Bob Ross Quotes</span>
+              <div class="card-text">                
+                Be so very light. Be a gentle whisper. Those great big fluffy
+                clouds. These little son of a guns hide in your brush and you just
+                have to push them out. Put your feelings into it, your heart, it's
+                your world. It's almost like something out of a fairytale book. I
+                want everbody to be happy.
+              </div>
+            </div>
+            <div class="card-footer">Card Footer</div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- MODALS -->
+    <div class="row mb-5">
+      <div class="col">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">Open</button>
+        <div class="modal fade" id="modal">
+          <div class="modal-dialog modal-dialog-centered modal-fullscreen-md-down">
+            <div class="modal-content">
+              <div class="modal-header"> 
+                <h1>Header</h1> 
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">Body</div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLLAPSE -->
+    <div class="row mb-5">
+      <div class="col">
+        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#row" aria-expanded="true" aria-controls="row">Toggle</button>
+        <div class="row collapse show" id="row">
+          <div class="col">
+            <div class="box"></div>
+          </div>
+        </div>
+        <div class="row collapse show" id="row">
+          <div class="col">
+            <div class="box"></div>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+
+    <!-- COLOR UTILITIES -->
+    <div class="row mb-5">
+      <div class="col">
+        <!-- <div class="card bg-dark text-light"> -->
+        <!-- <div class="card text-bg-success"> -->
+        <!-- <div class="card bg-success bg-opacity-25"> -->
+        <div class="card opacity-50">
+          <div class="card-body">
+            <a href="#" class="link-danger">Hi</a>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab possimus id ad totam facere laudantium dolores error cumque fuga explicabo!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STACK UTILITIES -->
+    <div class="row mb-5">
+      <div class="col">
+        <div class="card opacity-50">
+          <div class="card-body">
+            <div class="hstack gap-2">
+              <div class="box" style="width: 100%"></div>
+              <div class="box" style="width: 100%"></div>
+              <div class="box" style="width: 100%"></div>
+              <div class="box" style="width: 100%"></div>
+            </div>
+            <div class="vstack gap-3">
+              <div class="box" style="width: 100%"></div>
+              <div class="box" style="width: 100%"></div>
+              <div class="box" style="width: 100%"></div>
+              <div class="box" style="width: 100%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BORDER UTILITIES -->
+    <div class="row mb-5">
+      <div class="col">
+        <div class="card border-start border-5 border-opacity-50 border-primary">
+          <div class="card-body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit hic qui a ipsum veniam omnis saepe, tenetur repudiandae perferendis excepturi?
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISPLAY UTILITIES -->
+    <div class="row mb-5">
+      <div class="col">
+        <div class="card d-lg-none">
+          <div class="card-body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit hic qui a ipsum veniam omnis saepe, tenetur repudiandae perferendis excepturi?
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPACING UTILITIES -->
+    <div class="row mb-5">
+      <div class="col">
+        <div class="card border border-4 pt-3 mt-5">
+          <div class="card-body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit hic qui a ipsum veniam omnis saepe, tenetur repudiandae perferendis excepturi?
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLEXBOX UTILITIES -->
+    <div class="row mb-5">
+      <div class="col">
+        <div class="d-flex justify-content-between">
+          <div class="box" style="width: 100px; height: 100px;"></div>
+          <div class="box align-self-center flex-grow-1" style="width: 100px;"></div>
+          <div class="box" style="width: 100px;"></div>
+          <div class="box" style="width: 100px;"></div>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+    
+  </div>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+      <a href="#" class="navbar-brand">Brand</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item disabled">
+            <a href="#" class="nav-link">Store</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    
+    <script>
+      const form = document.querySelector(".frm-validate")
+      form.addEventListener('submit', e => {
+        if(!form.checkValidity()){
+          e.preventDefault();
+        }
+
+        form.classList.add('was-validated')
+      })
+    </script>
   </body>
 </html>
-<!-- 
-  Be so very light. Be a gentle whisper. Those great big fluffy
-            clouds. These little son of a guns hide in your brush and you just
-            have to push them out. Put your feelings into it, your heart, it's
-            your world. It's almost like something out of a fairytale book. I
-            want everbody to be happy. That's what it's all about. Put light
-            against light - you have nothing. Put dark against dark - you have
-            nothing. It's the contrast of light and dark that each give the
-            other one meaning. There is no right or wrong - as long as it makes
-            you happy and doesn't hurt anyone. A happy cloud. You can't make a
-            mistake. Anything that happens you can learn to use - and make
-            something beautiful out of it. I'm a water fanatic. I love water.
-            Let's have a nice tree right here. There we go. You can create
-            anything that makes you happy. Just let go - and fall like a little
-            waterfall. That is when you can experience true joy, when you have
-            no fear. If you don't think every day is a good day - try missing a
-            few. You'll see. The more we do this - the more it will do good
-            things to our heart. It just happens - whether or not you worried
-            about it or tried to plan it. If you overwork it you become a cloud
-            killer. There's nothing worse than a cloud killer. Be brave. Give
-            him a friend, we forget the trees get lonely too. Now we'll take the
-            almighty fan brush. This is gonna be a happy little seascape. See
-            how easy it is to create a little tree right in your world. You have
-            to allow the paint to break to make it beautiful. Nature is so
-            fantastic, enjoy it. Let it make you happy. It's a very cold
-            picture, I may have to go get my coat. It’s about to freeze me to
-            death. As trees get older they lose their chlorophyll. Trees live in
-            your fan brush, but you have to scare them out. This present moment
-            is perfect simply due to the fact you're experiencing it. I thought
-            today we would do a happy little picture. Talent is a pursued
-            interest. That is to say, anything you practice you can do. Of
-            course he's a happy little stone, cause we don't have any other
-            kind. If you've been in Alaska less than a year you're a Cheechako.
-            There's not a thing in the world wrong with washing your brush.
- -->
