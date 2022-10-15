@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Card } from 'src/app/models/card';
 import { CardService } from 'src/app/services/card.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   selector: 'app-card-modal',
@@ -12,17 +13,17 @@ import { CardService } from 'src/app/services/card.service';
 })
 export class CardModalComponent implements OnInit {
   cardForm!: FormGroup;
+  showSpinner: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private cardService: CardService,
     private dialogRef: MatDialogRef<CardModalComponent>,
-    private _snackBar: MatSnackBar,
+    private snackbarService: SnackbarService,
     @Inject(MAT_DIALOG_DATA) public data: Card
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
     this.cardForm = this.fb.group({
       name: [this.data?.name || '', Validators.maxLength(50)],
       title: [
@@ -42,25 +43,52 @@ export class CardModalComponent implements OnInit {
   }
 
   addCard(): void {
-    this.cardService.addCard(this.cardForm.value).subscribe((res: any) => {
-      this._snackBar.open(res || 'Kartvizit basariyla eklendi.', '', {
-        duration: 4000,
-      });
-      this.cardService.getCards();
-      this.dialogRef.close();
-    });
+    this.showSpinner = true;
+    this.cardService.addCard(this.cardForm.value).subscribe(
+      (res: any) => {
+        this.getSuccess(res || 'Kartvizit basariyla eklendi.');
+      },
+      (err: any) => {
+        this.getError(err.message || 'Kartvizit eklenirken bir hata olustu.');
+      }
+    );
   }
 
   updateCard(): void {
-    this.cardService
-      .updateCard(this.cardForm.value, this.data.id)
-      .subscribe((res: any) => {
-        console.log(res);
-        this._snackBar.open(res || 'Kartvizit basariyla guncellendi.', '', {
-          duration: 4000,
-        });
-        this.cardService.getCards();
-        this.dialogRef.close();
-      });
+    this.showSpinner = true;
+    this.cardService.updateCard(this.cardForm.value, this.data.id).subscribe(
+      (res: any) => {
+        this.getSuccess(res || 'Kartvizit basariyla guncellendi.');
+      },
+      (err: any) => {
+        this.getError(
+          err.message || 'Kartvizit guncellenirken bir hata olustu.'
+        );
+      }
+    );
+  }
+
+  deleteCard(): void {
+    this.showSpinner = true;
+    this.cardService.deleteCard(this.data.id).subscribe(
+      (res: any) => {
+        this.getSuccess(res || 'Kartvizit basariyla silindi.');
+      },
+      (err: any) => {
+        this.getError(err.message || 'Kartvizit silinirken bir hata olustu.');
+      }
+    );
+  }
+
+  getSuccess(message: string): void {
+    this.snackbarService.createSnackbar('success', message);
+    this.cardService.getCards();
+    this.showSpinner = false;
+    this.dialogRef.close();
+  }
+
+  getError(message: string) {
+    this.snackbarService.createSnackbar('error', message);
+    this.showSpinner = false;
   }
 }

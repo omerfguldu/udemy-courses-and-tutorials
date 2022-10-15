@@ -1,31 +1,42 @@
 <h2 mat-dialog-title>{{ data ? "Kartviziti Duzenle" : "Yeni Karvizit" }}</h2>
 <mat-dialog-content class="mat-typography">
+  <div *ngIf="showSpinner">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <br />
+  </div>
   <form [formGroup]="cardForm">
     <mat-form-field class="example-full-width">
-      <mat-label>Title</mat-label>
+      <mat-label>Baslik</mat-label>
       <input matInput formControlName="title" />
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Name</mat-label>
+      <mat-label>Ad-Soyad</mat-label>
       <input matInput formControlName="name" />
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Phone</mat-label>
+      <mat-label>Telefon</mat-label>
       <input matInput formControlName="phone" />
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Email</mat-label>
+      <mat-label>E-posta Adresi</mat-label>
       <input matInput formControlName="email" />
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Address</mat-label>
+      <mat-label>Adres</mat-label>
       <textarea matInput formControlName="address"></textarea>
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <div class="flex-grow-1 text-start" *ngIf="data">
-    <button mat-stroked-button color="warn">Sil</button>
+    <button
+      (click)="deleteCard()"
+      mat-stroked-button
+      color="warn"
+      [disabled]="showSpinner"
+    >
+      Sil
+    </button>
   </div>
   <div>
     <button mat-button mat-dialog-close>Vazgec</button>
@@ -33,6 +44,7 @@
       mat-flat-button
       color="primary"
       (click)="data ? updateCard() : addCard()"
+      [disabled]="cardForm.invalid || showSpinner"
     >
       {{ data ? "Guncelle" : "Ekle" }}
     </button>
