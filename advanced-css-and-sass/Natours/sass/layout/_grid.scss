@@ -1,23 +1,17 @@
 .row {
   max-width: $grid-width;
-  background-color: #eee;
   margin: 0 auto;
+  background-color: #eee;
+  display: flex;
+  gap: $gutter-horizontal;
 
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
   }
 
-  @include clearfix;
-
-  // select all the columns starting with col-
-  [class^="col-"] {
-    background-color: orangered;
-    float: left;
-
-    &:not(:last-child) {
-      margin-right: $gutter-horizontal;
-    }
-  }
+  // [class^="col-"] {
+  //   background-color: orangered;
+  // }
 
   .col-1-of-2 {
     width: calc((100% - #{$gutter-horizontal}) / 2);
