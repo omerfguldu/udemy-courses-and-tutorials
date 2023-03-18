@@ -6,6 +6,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -89,16 +90,19 @@ function CreateListing() {
 
     if (geolocationEnabled) {
       const response = await fetch(
-        `http://api.positionstack.com/v1/for ward?access_key=${process.env.REACT_APP_GEOCODE_API_KEY}&query=${address}`
+        `http://api.positionstack.com/v1/forward?access_key=${
+          import.meta.env.VITE_GEOCODE_API_KEY
+        }&query=${address}`
       );
       const data = await response.json();
+      console.log(data);
       setFormData(
         (prevState) => ({
           ...prevState,
           latitude: data.data[0]?.latitude ?? 0,
           longitude: data.data[0]?.longitude ?? 0,
         }),
-        (location = data.data[0]?.label && undefined)
+        (location = data.data[0]?.label ?? undefined)
       );
 
       if (location === undefined || location.includes("undefined")) {
@@ -109,7 +113,6 @@ function CreateListing() {
     } else {
       geolocation.lat = latitude;
       geolocation.lng = longitude;
-      location = address;
     }
 
     // Store images in firebase
@@ -149,7 +152,30 @@ function CreateListing() {
       });
     };
 
+    const imageUrls = await Promise.all(
+      [...images].map((image) => storeImage(image))
+    ).catch(() => {
+      setLoading(false);
+      toast.error("Images not uploaded.");
+      return;
+    });
+
+    const formDataCopy = {
+      ...formData,
+      imageUrls,
+      geolocation,
+      timestamp: serverTimestamp(),
+    };
+
+    formDataCopy.location = address;
+    delete formDataCopy.images;
+    delete formDataCopy.address;
+    !formDataCopy.offer && delete formDataCopy.discountedPrice;
+
+    const docRef = await addDoc(collection(db, "listings"), formDataCopy);
     setLoading(false);
+    toast.success("Listing saved");
+    navigate(`/category/${formDataCopy.type}/${docRef.id}`);
   };
 
   const onMutate = (e) => {
