@@ -47,7 +47,6 @@ function Offers() {
         });
 
         setListings(listings);
-        console.log(listings);
         setLoading(false);
       } catch (error) {
         toast.error("Could not fetch listings");
