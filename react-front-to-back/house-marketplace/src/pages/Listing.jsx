@@ -119,7 +119,7 @@ function Listing() {
         <div className="leafletContainer">
           <MapContainer
             style={{ height: "100%", width: "100%" }}
-            center={[listing.geolocation.lat, listing.geolocation.lng]}
+            center={[listing.latitude, listing.longitude]}
             zoom={13}
             scrollWheelZoom={false}
           >
@@ -128,9 +128,7 @@ function Listing() {
               url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
             />
 
-            <Marker
-              position={[listing.geolocation.lat, listing.geolocation.lng]}
-            >
+            <Marker position={[listing.latitude, listing.longitude]}>
               <Popup>{listing.location}</Popup>
             </Marker>
           </MapContainer>

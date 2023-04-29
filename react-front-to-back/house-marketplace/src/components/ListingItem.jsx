@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { ReactComponent as DeleteIcon } from "../assets/svg/deleteIcon.svg";
+import { ReactComponent as EditIcon } from "../assets/svg/editIcon.svg";
 import bedIcon from "../assets/svg/bedIcon.svg";
 import bathtubIcon from "../assets/svg/bathtubIcon.svg";
 
-function ListingItem({ listing, id, onDelete }) {
+function ListingItem({ listing, id, onDelete, onEdit }) {
   return (
     <li className="categoryListing">
       <Link
@@ -24,8 +25,8 @@ function ListingItem({ listing, id, onDelete }) {
               ? listing.discountedPrice
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-              : listing
-                  .regularPricetoString()
+              : listing.regularPrice
+                  .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             {listing.type === "rent" && " / Month"}
           </p>
@@ -53,6 +54,8 @@ function ListingItem({ listing, id, onDelete }) {
           onClick={() => onDelete(listing.id, listing.name)}
         />
       )}
+
+      {onEdit && <EditIcon className="editIcon" onClick={() => onEdit(id)} />}
     </li>
   );
 }
