@@ -143,6 +143,8 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
+
 // Destructuring
 
 const book = getBook(3);
@@ -223,3 +225,82 @@ function getTotalReviewCount(book) {
 }
 
 console.log(getTotalReviewCount(book));
+
+*/
+
+/*
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+const books = getBooks();
+
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+x;
+
+const titles = books.map((book) => book.title);
+titles;
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book),
+}));
+essentialData;
+
+const longBooks = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => +book.publicationDate.split("-")[0] < 1955);
+longBooks;
+
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title);
+adventureBooks;
+
+const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
+pagesAllBooks;
+
+const y = [3, 7, 1, 9, 8];
+const sorted = y.slice().sort((a, b) => a - b);
+sorted;
+y;
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPages;
+
+// 1) Add book object to array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J. K. Rowling",
+};
+const booksAfterAdd = [...books, newBook];
+booksAfterAdd;
+
+// 2) Delete book object from array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+// 3) Update book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 120 } : book
+);
+booksAfterUpdate;
+*/
+
+// fetch("https://jsonplaceholder.typicode.com/todos/1")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+// console.log("omer");
+
+async function getTodo() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const data = await res.json();
+  console.log(data);
+}
+
+getTodo();
